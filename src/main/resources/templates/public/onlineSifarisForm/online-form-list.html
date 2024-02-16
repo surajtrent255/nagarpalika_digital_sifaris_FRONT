@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>गोदावरी नगरपालिका, ललितपुर</title>
+<!--favicon-->
+<link rel="icon" th:href="@{/assets/images/favicon1.ico}"
+	href="assets/images/favicon1.ico" type="image/x-icon" />
+<link rel="stylesheet" th:href="@{/assets/plugins/bootstrap/bootstrap.min.css}"
+	href="assets/plugins/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{assets/plugins/aosmaster/aos.css}"
+	href="assets/puglins/aosmaster/aos.css" type="application/json">
+<link rel="stylesheet"
+	th:href="@{/assets/font/fontawesome/css/font-awesome.min.css}"
+	href="assets/font/fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" th:href="@{/assets/font/line-icon/css/icons.css}"
+	href="assets/font/line-icon/css/icons.css">
+<link rel="stylesheet"
+	th:href="@{/assets/plugins/owlcarousel/owl.carousel.min.css}"
+	href="assets/plugins/owlcarousel/owl.carousel.min.css">
+<link rel="stylesheet"
+	th:href="@{/assets/owlcarousel/owl.theme.default.min.css}"
+	href="assets/owlcarousel/owl.theme.default.min.css" type="text/html">
+<link rel="stylesheet" th:href="@{/assets/css/sass/style.css}"
+	href="assets/css/sass/style.css">
+<link rel="stylesheet" th:href="@{/assets/css/sass/responsive.css}"
+	href="assets/css/sass/style.css" type="text/html">
+</head>
+
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg">
+			<div class="container-fluid">
+				<a class="navbar-brand" th:href="@{/online-sifaris/online-form}">
+					<div class="d-flex align-items-center">
+						<img th:src="@{/assets/images/logo-badge.png}" alt="" height="100px" width="100px">
+						<div style="margin-left: 10px;">
+							<h4 class="brand-name">गोदावरी नगरपालिका</h4>
+							<br> <span>नेपाल सरकार</span>
+						</div>
+					</div>
+
+				</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav m-auto">
+<!-- 						<li class="nav-item"><a class="nav-link active" -->
+<!-- 							aria-current="page" href="#">गृह</a></li> -->
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/online-sifaris/online-form}">अनलाइन सिफारिस</a></li>
+<!-- 						<li class="nav-item"><a class="nav-link" th:href="@{/favourite-place}">महत्त्वपूर्ण स्थल</a></li> -->
+<!-- 						<li class="nav-item"><a class="nav-link" th:href="@{/home}">Login</a></li> -->
+<!-- 						<li class="nav-item"><a class="nav-link">नागरिक बडापत्र</a></li> -->
+					</ul>
+					<div class="nav-right">
+						<ul>
+							<li><img th:src="@{/assets/images/nepal_flag.gif}" alt="" width="50px"></li>
+							<li></li>
+							<li><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+								<span id="displayDate"></span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div class="mar-t"></div>
+	<div class="online-sifaris">
+		<div class="container onlisifaris-wrapper">
+			<div class="row">
+<!-- 				<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12"></div> -->
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+					<h2 class="text-center">अनलाइन सिफारिस</h2>
+					<div>
+
+						<div class="row">
+							<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
+								<div class="sifaris-icon">
+									<a href=""> <img th:src="@{/assets/images/icons/electric.png}" alt="">
+										<h6>विद्युत जडान सिफारिस</h6>
+										<div class="btns">
+											<a th:href="@{/online-sifaris/form/21}" class="btn btn-primary">निवेदन</a>
+											<a href="" class="btn btn-secondary" data-bs-toggle="modal"
+											   data-bs-target="#electricityConnectionRegistrationModal">प्रक्रिया</a>
+										</div>
+									</a>
+									<div class="modal fade" id="electricityConnectionRegistrationModal" tabindex="-1"
+										 aria-labelledby="electricityConnectionRegistrationModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="electricityConnectionRegistrationModalLabel">तलकाे
+														प्रक्रिया अपनाउनुहाेस्</h5>
+													<button type="button" class="btn-close"
+															data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<p><b>(१) 'दर्ता गर्नुहोस्' मा क्लिक गर्नुहोस ।<br>
+														(२) आवश्यक जानकारी भर्नुहोस् ।<br>
+														(३) टोकन लिनुहोस् र कार्यालय भ्रमण गर्नुहोस् ।<br>
+														(४) कार्यालयमा जानकारी प्रमाणित गर्नुहोस् ।<br>
+														<br>
+														आवश्यक कागजातहरू</b><br>
+														१) निवेदन पत्र<br>
+														२) उजुरी कर्ता को नागरिकता <br>
+														३) चालु आ.व. सम्मको मालपोत र घर जग्गा कर वा एकीकृत सम्पत्ति कर तिरेको रसिद<br>
+														४) जग्गा धनि पुर्जा  र नक्शा पास गरेको प्रमाण<br>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+
+						</div>
+						
+				</div>
+<!-- 				<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12"></div> -->
+			</div>
+		</div>
+		
+		<footer class="ftr mt-4">
+		<p class="ftr">
+			© 2021, Online Sifaris, All Rights Reserved. Website By: <a
+				href="https://www.archiesoft.com.np/" target="_blank">ArchieSoft</a>
+		</p>
+	</footer>
+		
+		
+	</div>
+
+
+
+
+	<script th:src="@{/assets/plugins/bootstrap/bootstrap.bundle.min.js}"
+		src="assets/plugins/bootstrap/bootstrap.bundle.min.js"></script>
+	<script th:src="@{/assets/js/jquery.min.js}"
+		src="assets/js/jquery.min.js"></script>
+	<script th:src="@{/assets/plugins/owlcarousel/owl.carousel.min.js}"
+		src="assets/plugins/owlcarousel/owl.carousel.min.js"></script>
+	<script th:src="@{/assets/js/moment.min.js}"
+		src="assets/js/moment.min.js"></script>
+	<script th:src="@{/assets/plugins/aosmaster/aos.js}"
+		src="assets/plugins/aosmaster/aos.js"></script>
+	<script th:src="@{/assets/jquery.steps/js/jquery.steps.min.js}"
+		src="assets/jquery.steps/js/jquery.steps.min.js"  type="text/html"></script>
+	<script th:src="@{/assets/js/main.js}" src="assets/js/main.js"></script>
+	<script>
+		AOS.init();
+	</script>
+</body>
+</html>

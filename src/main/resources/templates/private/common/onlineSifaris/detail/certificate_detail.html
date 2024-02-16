@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+    <title>गोदावरी नगरपालिका, ललितपुर</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" th:href="@{/assets/images/favicon1.ico}"
+          href="assets/images/favicon1.ico" type="image/x-icon"/>
+    <link th:href="@{/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css}"
+          href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css"
+          rel="stylesheet"/>
+    <link th:href="@{/assets/plugins/simplebar/css/simplebar.css}"
+          href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>
+    <link th:href="@{/assets/css/bootstrap.min.css}"
+          href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link th:href="@{/assets/css/animate.css}" href="assets/css/animate.css"
+          rel="stylesheet" type="text/css"/>
+    <link th:href="@{/assets/css/icons.css}" href="assets/css/icons.css"
+          rel="stylesheet" type="text/css"/>
+    <link th:href="@{/assets/css/sidebar-menu.css}"
+          href="assets/css/sidebar-menu.css" rel="stylesheet"/>
+
+    <link th:href="@{/assets/css/app-style.css}"
+          href="assets/css/app-style.css" rel="stylesheet"/>
+    <link rel="stylesheet"
+          th:href="@{/assets/plugins/datatable/datatables.min.css}"
+          href="assets/plugins/datatable/datatables.min.css">
+    <link rel="stylesheet"
+          th:href="@{/assets/plugins/jquery.steps/css/jquery.steps.css}"
+          href="assets/plugins/jquery.steps/css/jquery.steps.css">
+    <link rel="stylesheet"
+          th:href="@{/assets/plugins/nepali-datepicker/nepaliDatePicker.min.css}"
+          href="assets/plugins/nepali-datepicker/nepaliDatePicker.min.css">
+
+    <style>
+.form-group {
+    width: 100%;
+}
+
+.wizard>.content {
+    background: #fff;
+    min-height: 430px;
+    margin: 0;
+}
+
+.wizard>.content>.body {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.member-panel .padding, .member-panel-submit .padding {
+    padding: 10px;
+}
+
+.wizard>.content>.body label.error {
+    margin-left: 0;
+}
+
+#mapid {
+    height: 50em;
+    width: 50em;
+}
+
+.error_form {
+    top: 12px;
+    color: rgb(216, 15, 15);
+    font-size: 15px;
+    font-family: Helvetica;
+}
+.imageProp {
+    width:20%;
+    height:auto
+}
+.tableImage img{
+ 
+    transition: 0.5s;
+}
+.tableImage img:hover{
+    transform: scale(6);
+    z-index: 8;
+}
+
+    </style>
+</head>
+<body>
+<div id="wrapper">
+
+    <div th:replace="~{fragments/online-sifaris-sidebar :: sifaris-sidebar}"></div>
+    <header th:replace="~{fragments/header :: header}" class="header1"></header>
+    <div class="clearfix"></div>
+    <div class="content-wrapper">
+        <div class="container-fluid" id="pjax-container">
+            <div class="row pt-2 pb-2">
+                <div class="col-sm-9">
+                    <h4 class="page-title">पत्रको विवरण</h4>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javaScript:void();">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sifaris</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">जानकारी लिननुहोस्</div>
+
+                            <table class="table table-striped display-6">
+                               
+                                <tbody>
+           
+                                   <tr th:each="field, indx: ${certificateFields}">
+                                       <th th:if="${field.fieldAnswer}" th:text="${field.fieldName}"></th>
+                                       <td th:if="${field.fieldAnswer} and ${field.fieldType} != 'IMAGE'" th:text="${field.fieldAnswer}"></td>
+                                       <td class="tableImage"  th:if="${field.fieldType} == 'IMAGE'">
+                                           <img class="imageProp" alt="NO DOCUMENT"
+                                                th:src="${field.fieldAnswer}"/> 
+                                       </td>
+                                   </tr>
+                                    <tr>
+                                        <td  style="vertical-align: middle;">
+                                             <span>प्रक्रिया</span> 
+                                        </td>
+                                        <td>
+                                        <button sec:authorize="hasAnyRole('CENTRAL_ADMIN', 'WARD_ADMIN')" th:if="${status == 1}" class="btn btn-primary stamp-form button-style"  id="stamp-form" th:data-tokenid="${tokenId}" th:data-status="2"> तोक लगाउनुहोस् </button>
+                                        <button sec:authorize="hasAnyRole('CENTRAL_ADMIN', 'REGISTRAR')" th:if="${status == 2}" class="btn btn-primary register-form button-style" id="register-form"  th:data-tokenid="${tokenId}" th:data-status="3"> दर्ता गर्नुहोस् </button>
+                                        <button sec:authorize="hasAnyRole('CENTRAL_ADMIN', 'WARD_SECRETARY')" th:if="${status == 3}" class="btn btn-primary process-form button-style" id="process-form"  th:data-tokenid="${tokenId}" th:data-status="4"> प्रक्रिया गर्नुहोस् </button>
+                                        <button sec:authorize="hasAnyRole('CENTRAL_ADMIN', 'WARD_ADMIN')" th:if="${status == 4}" class="btn btn-primary verify-form button-style" id="verify-form"  th:data-tokenid="${tokenId}" th:data-status="5"> प्रमाणित गर्नुहोस् </button>
+                                        <a th:if="${status == 5}" sec:authorize="hasAnyRole('CENTRAL_ADMIN','PRINTER')"
+                                        th:href="@{/e-governance-dashboard/sifaris/print/{tokenId}/{formId}/(tokenId = ${tokenId}, formId=${formId})}"
+                                        class="btn btn-xs btn-success button-style">छाप्नुहोस् 
+                                    </a>
+                                           <button sec:authorize="hasAnyRole('CENTRAL_ADMIN')" class="btn btn-lg btn-info mt-1 ml-4 edit-form" id="edit-form" th:data-tokenid="${tokenId}"> सच्याउनुहोस </button>
+                                        </td>
+                                    </tr>
+                                    </div>
+                                <hr>
+                                </tbody>
+                            </table>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a sec:authorize="hasAnyRole('CENTRAL_ADMIN', 'WARD_ADMIN', 'WARD_SECRETARY', 'PRINTER', 'REGISTRAR')" class="btn btn-success " th:href="@{/e-governance-dashboard/{formId}/list/(formId = ${formId})}"><i class="fa-solid fa-reply-all"></i>पछाडी जानुहोस</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a sec:authorize="hasAnyRole('CENTRAL_ADMIN', 'WARD_ADMIN', 'WARD_SECRETARY', 'PRINTER', 'REGISTRAR')"  th:data-tokenid="${tokenId}" class="btn btn-secondary letter-blueprint" href="#">नमुना पत्र</a>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+            </div>
+            <!-- <footer th:replace="~{fragments/footer :: footer}"></footer> -->
+
+        </div>
+           <!-- 2 <footer th:replace="~{fragments/footer :: footer}"></footer> -->
+
+    </div>
+            <!-- 3<footer th:replace="~{fragments/footer :: footer}"></footer> -->
+
+    <a href="javaScript:void();" class="back-to-top"><i
+            class="fa fa-angle-double-up"></i> </a>
+    <!-- <footer th:replace="~{fragments/footer :: footer}"></footer> -->
+</div>
+<div th:replace="~{fragments/scripts :: scripts}">
+</div>
+<!--Start footer-->
+<script th:src="@{/assets/plugins/nepali-datepicker/nepaliDatePicker.min.js}"
+        src="assets/plugins/nepali-datepicker/jquery.nepaliDatePicker.min.js"></script>
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+    var formId = /*[[${formId}]]*/'';
+    /*]]>*/
+    
+    $(function () {
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        $(document).ajaxSend(function(e, xhr, options) {
+            xhr.setRequestHeader(header, token);
+        });
+    }); 
+    
+        // Click event handler for order detail link.
+    $(".letter-blueprint").on("click",  function (event) {
+        event.preventDefault();
+        let tokenNumber = $(this).attr("data-tokenid");
+        let url = `${contextPath}/e-governance-dashboard/sifaris/preview/${tokenNumber}/${formId}`;
+        window.open(url, "_self");
+    });
+    
+    $(".stamp-form").on("click", function(event) {
+        Swal.fire({
+          title: 'Are you sure to stamp?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, i am sure !'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            let sifarisMetaData = {};
+            sifarisMetaData.formId = formId;
+            sifarisMetaData.tokenId = $(this).attr("data-tokenid");
+            sifarisMetaData.status = $(this).attr("data-status");
+
+            swal.fire({
+                text: "please wait...",
+                icon: "info",
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false
+            })
+            $.ajax({
+                method : "PUT",
+                url : contextPath + "/e-governance-dashboard/updateCertificateStatus/"+formId,
+                data : JSON.stringify(sifarisMetaData),
+                contentType : "application/json",
+                processData: false,
+                success : function(result) {
+                    swal.fire({
+                        title: "Stamped",
+                        text: "Stamped!",
+                        icon: "success",
+                        closeOnClickOutside: true,
+                        closeOnEsc: true
+                    })
+                    .then(function() {
+                        location.reload();
+                    });
+                },
+                error : function(error) {
+                    swal.fire({
+                        text: error.responseJSON.message,
+                        icon: "error",
+                        closeOnClickOutside: false,
+                        closeOnEsc: false
+                    })
+                    .then(function() {
+                        location.reload();
+                    });
+                }
+            });
+          }
+        })
+
+        
+    });
+    
+    
+    function getingRegistrationNumber(){
+        let regNo = prompt("Please enter registration no");
+        return regNo;
+    }
+    $(".register-form").on("click", function(event) {
+
+        let regNumber = getingRegistrationNumber();
+
+        if (regNumber == null || regNumber == "") {
+            return;
+        }
+        Swal.fire({
+          title: 'Are you sure to register?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, i am sure !'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            let tokenNumber = $(this).attr("data-tokenid");
+            let status = $(this).attr("data-status");
+            swal.fire({
+                text: "कृपया पर्खनुहोस ....",
+                icon: "info",
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false
+            });
+            let sifarisMetaData = {};
+            sifarisMetaData.formId = formId;
+            sifarisMetaData.regNumber = regNumber;
+            sifarisMetaData.tokenId = $(this).attr("data-tokenid");
+            sifarisMetaData.status = $(this).attr("data-status");
+            $.ajax({
+                method : "PUT",
+                data : JSON.stringify(sifarisMetaData),
+                contentType : "application/json",
+                processData: false,
+                url : contextPath + "/e-governance-dashboard/updateCertificateStatus/"+formId,
+                success : function(result) {
+                    swal.fire({
+                        title: "Registered",
+                        text: "Registered!",
+                        icon: "success",
+                        closeOnClickOutside: true,
+                        closeOnEsc: true
+                    })
+                    .then(function() {
+                        location.reload();
+                    });
+                },
+                error : function(error) {
+                    swal.fire({
+                        text: error.responseJSON.message,
+                        icon: "error",
+                        closeOnClickOutside: false,
+                        closeOnEsc: false
+                    })
+                    .then(function() {
+                        location.reload();
+                    });
+                }
+            });
+          }
+        })
+    });
+    
+    $(".process-form").on("click", function(event) {
+        Swal.fire({
+          title: 'Are you sure to process?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, i am sure !'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            let tokenNumber = $(this).attr("data-tokenid");
+            let status = $(this).attr("data-status");
+            swal.fire({
+                text: "कृपया पर्खनुहोस .......",
+                icon: "info",
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false
+            })
+            let sifarisMetaData = {};
+            sifarisMetaData.formId = formId;
+            sifarisMetaData.tokenId = $(this).attr("data-tokenid");
+            sifarisMetaData.status = $(this).attr("data-status");
+            $.ajax({
+                method : "PUT",
+                url : contextPath + "/e-governance-dashboard/updateCertificateStatus/"+formId,
+                data : JSON.stringify(sifarisMetaData),
+                contentType : "application/json",
+                processData: false,
+                success : function(result) {
+                    swal.fire({
+                        title: "Processed",
+                        text: "processed!",
+                        icon: "success",
+                        closeOnClickOutside: true,
+                        closeOnEsc: true
+                    })
+                    .then(function() {
+                        location.reload();
+                    });
+                },
+                error : function(error) {
+                    swal.fire({
+                        text: error.responseJSON.message,
+                        icon: "error",
+                        closeOnClickOutside: false,
+                        closeOnEsc: false
+                    })
+                    .then(function() {
+                        location.reload();
+                    });
+                }
+            });
+          }
+        })
+    });
+    
+    
+    $(".verify-form").on("click", function(event) {
+        Swal.fire({
+          title: 'Are you sure to verify ?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, i am sure !'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            let tokenNumber = $(this).attr("data-tokenid");
+            let status = $(this).attr("data-status");
+            swal.fire({
+                text: "please wait...",
+                icon: "info",
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false
+            })
+            let sifarisMetaData = {};
+            sifarisMetaData.formId = formId;
+            sifarisMetaData.tokenId = $(this).attr("data-tokenid");
+            sifarisMetaData.status = $(this).attr("data-status");
+
+            $.ajax({
+                method : "PUT",
+                url : contextPath + "/e-governance-dashboard/updateCertificateStatus/"+formId,
+                data : JSON.stringify(sifarisMetaData),
+                contentType : "application/json",
+                processData: false,
+                success : function(result) {
+                    swal.fire({
+                        title: "Verified",
+                        text: "Verified!",
+                        icon: "success",
+                        closeOnClickOutside: true,
+                        closeOnEsc: true
+                    })
+                    .then(function() {
+                        location.reload();
+                        // history.back()
+                    });
+                },
+                error : function(error) {
+                    swal.fire({
+                        text: error.responseJSON.message,
+                        icon: "error",
+                        closeOnClickOutside: false,
+                        closeOnEsc: false
+                    })
+                    .then(function() {
+                        location.reload();
+                    });
+                }
+            });
+          }
+        })
+        
+    });
+
+    $(".edit-form").on("click", function(event) {
+        event.preventDefault();
+
+        let tokenNumber = $(this).attr("data-tokenid");
+        let url = `${contextPath}/e-governance-dashboard/edit/${tokenNumber}/${formId}`;
+        window.open(url);
+        
+    });
+    
+    
+</script>
+</body>
+</html>

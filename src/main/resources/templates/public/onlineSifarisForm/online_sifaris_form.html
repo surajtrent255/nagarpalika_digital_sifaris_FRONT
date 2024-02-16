@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <title>गोदावरी नगरपालिका, ललितपुर</title>
+    <link
+      rel="icon"
+      th:href="@{/assets/images/favicon1.ico}"
+      href="assets/images/favicon1.ico"
+      type="image/x-icon"
+    />
+    <link
+      th:href="@{/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css}"
+      href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css"
+      rel="stylesheet"
+    />
+    <link
+      th:href="@{/assets/plugins/simplebar/css/simplebar.css}"
+      href="assets/plugins/simplebar/css/simplebar.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      th:href="@{/assets/css/bootstrap.min.css}"
+      href="assets/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      th:href="@{/assets/css/animate.css}"
+      href="assets/css/animate.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      th:href="@{/assets/css/icons.css}"
+      href="assets/css/icons.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      th:href="@{/assets/css/sidebar-menu.css}"
+      href="assets/css/sidebar-menu.css"
+      rel="stylesheet"
+    />
+
+    <link
+      th:href="@{/assets/css/app-style.css}"
+      href="assets/css/app-style.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/plugins/datatable/datatables.min.css}"
+      href="assets/plugins/datatable/datatables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/plugins/jquery.steps/css/jquery.steps.css}"
+      href="assets/plugins/jquery.steps/css/jquery.steps.css"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/plugins/nepali-datepicker/nepaliDatePicker.min.css}"
+      href="assets/plugins/nepali-datepicker/nepaliDatePicker.min.css"
+    />
+
+    <link
+      rel="icon"
+      th:href="@{/assets/images/favicon1.ico}"
+      href="assets/images/favicon1.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/plugins/bootstrap/bootstrap.min.css}"
+      href="assets/plugins/bootstrap/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{assets/plugins/aosmaster/aos.css}"
+      href="assets/puglins/aosmaster/aos.css"
+      type="application/json"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/font/fontawesome/css/font-awesome.min.css}"
+      href="assets/font/fontawesome/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/font/line-icon/css/icons.css}"
+      href="assets/font/line-icon/css/icons.css"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/plugins/owlcarousel/owl.carousel.min.css}"
+      href="assets/plugins/owlcarousel/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/owlcarousel/owl.theme.default.min.css}"
+      href="assets/owlcarousel/owl.theme.default.min.css"
+      type="text/html"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/css/sass/style.css}"
+      href="assets/css/sass/style.css"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/css/sass/responsive.css}"
+      href="assets/css/sass/style.css"
+      type="text/html"
+    />
+
+    <style>
+      body {
+        height: auto;
+        width: auto;
+      }
+      .form-group {
+        width: 100%;
+      }
+
+      .wizard > .content {
+        background: #fff;
+        min-height: 430px;
+        margin: 0;
+      }
+
+      .wizard > .content > .body {
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .member-panel .padding,
+      .member-panel-submit .padding {
+        padding: 10px;
+      }
+
+      .wizard > .content > .body label.error {
+        margin-left: 0;
+      }
+
+      .error_form {
+        top: 12px;
+        color: rgb(216, 15, 15);
+        font-size: 15px;
+        font-family: Helvetica;
+      }
+
+      .img-thumbnail {
+        padding: 0.25rem;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+        max-width: 15%;
+        height: 15%;
+      }
+      .imagebox img {
+        transition: 1s;
+        z-index: -1;
+      }
+
+      .imagebox :hover {
+        transform: scale(7);
+        z-index: 4;
+      }
+      .litag {
+        height: 100px;
+        width: 290px;
+        justify-content: center;
+      }
+
+      .listicon {
+        height: 50px;
+        width: 50px;
+        margin-left: 60px;
+      }
+    </style>
+    <script
+      th:src="@{/assets/js/jquery.min.js}"
+      src="assets/js/jquery.min.js"
+    ></script>
+
+    <script type="text/javascript">
+      function checkStatus(id, type) {
+        let inpVal = $(`#${id}`).val();
+
+        if (
+          type === "text" ||
+          type === "email" ||
+          type === "number" ||
+          type === "file"
+        ) {
+          if (!inpVal.trim()) {
+            $(`.${id}Input`).html(" * required ");
+            $(`.${id}Input`).addClass("text-danger");
+            // $('#register-btn').prop('disabled', true);
+          }
+        }
+
+        if (type === "email") {
+          if (
+            !inpVal
+              .trim()
+              .match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)
+          ) {
+            $(`.${id}Input`).html("* इमेल मिलेन।");
+            $(`.${id}Input`).addClass("text-danger");
+            $("#electricity_submit_button").attr("disabled", "true");
+          } else {
+            $(`.${id}Input`).html(
+              "valid <i class='fa fa-check' aria-hidden='true'></i> "
+            );
+            $(`.${id}Input`).addClass("text-success");
+            $("#electricity_submit_button").removeAttr("disabled");
+          }
+          return;
+        }
+        if (type === "select-one") {
+          if (inpVal.trim()) {
+            $(`.${id}Input`).html("");
+            // $('#register-btn').prop('disabled', true);
+          }
+        }
+      }
+
+      function clearField(id, type) {
+        $(`.${id}Input`).html("");
+        $(`.${id}Input`).removeClass("text-danger");
+      }
+    </script>
+  </head>
+  <body>
+    <!-- <div id="wrapper"> -->
+    <!-- Side bar and header -->
+    <!--        <div th:replace="~{fragments/private-sidebar :: private-sidebar}"></div> -->
+    <!--        <div th:replace="~{fragments/online-sifaris-sidebar ::online-sifaris-sidebar}"></div> -->
+    <!--        <div th:replace="~{fragments/private-sidebar ::private-sidebar}" sec:authorize="${hasAnyRole('CENTRAL_ADMIN', 'WARD_ADMIN')}"></div> -->
+    <!--        <header th:replace="~{fragments/header :: header}" class="header1"> </header> -->
+    <!--        <div class="clearfix"></div> -->
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" th:href="@{/online-sifaris/online-form}">
+            <div class="d-flex align-items-center">
+              <img
+                th:src="@{/assets/images/logo-badge.png}"
+                alt=""
+                height="100px"
+                width="100px"
+              />
+              <div style="margin-left: 10px">
+                <h4 class="brand-name">गोदावरी नगरपालिका</h4>
+                <br />
+                <span>नेपाल सरकार</span>
+              </div>
+            </div>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav m-auto">
+              <!--                        <li class="nav-item"><a class="nav-link active" -->
+              <!--                            aria-current="page" href="#">गृह</a></li> -->
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/online-sifaris/online-form}"
+                  >अनलाइन सिफारिस </a
+                >
+              </li>
+              <!--                        <li class="nav-item"><a class="nav-link" th:href="@{/favourite-place}">महत्त्वपूर्ण स्थल</a></li> -->
+              <!--                        <li class="nav-item"><a class="nav-link" th:href="@{/home}">Login</a></li> -->
+              <!--                        <li class="nav-item"><a class="nav-link">नागरिक बडापत्र</a></li> -->
+            </ul>
+            <div class="nav-right">
+              <ul>
+                <li>
+                  <img
+                    th:src="@{/assets/images/nepal_flag.gif}"
+                    alt=""
+                    width="50px"
+                  />
+                </li>
+                <li></li>
+                <li>
+                  <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                  <span id="displayDate"></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="content-fluid">
+      <div class="container-fluid online-sifarisform-wrapper">
+        <div class="row">
+          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+            <div class="application-type">
+              <ul>
+                <li class="litag">
+                  <div class="container d-grid">
+                    <a href="/online-sifaris/form/1"
+                      >घर जग्गा नामसारी सिफारिस</a
+                    >
+                    <img
+                      th:src="@{/assets/images/icons/home.png}"
+                      class="img-fluid listicon"
+                      alt=""
+                    />
+                  </div>
+                </li>
+
+                <li class="litag">
+                  <div class="container d-grid">
+                    <a href="/online-sifaris/form/2"
+                      >जिवित सँगको नाता प्रमाणित</a
+                    >
+
+                    <img
+                      th:src="@{/assets/images/icons/life.png}"
+                      class="img-fluid listicon"
+                      alt=""
+                    />
+                  </div>
+                </li>
+
+                <li class="litag">
+                  <div class="container d-grid">
+                    <a href="/online-sifaris/form/3"
+                      >मृतक सँगको नाता प्रमाणित</a
+                    >
+                    <img
+                      th:src="@{/assets/images/icons/death.png}"
+                      class="img-fluid listicon"
+                      alt=""
+                    />
+                  </div>
+                </li>
+
+                <li class="litag">
+                  <div class="container d-grid">
+                    <a href="/online-sifaris/form/4">विवाह दर्ता</a>
+                    <img
+                      th:src="@{/assets/images/icons/marriage.png}"
+                      class="listicon"
+                      alt=""
+                    />
+                  </div>
+                </li>
+
+                <li class="litag">
+                  <div class="container d-grid">
+                    <a href="/online-sifaris/form/5">छात्रबृत्ति सिफारिस</a>
+                    <img
+                      th:src="@{/assets/images/icons/scholorship.png}"
+                      class="img-fluid listicon"
+                      alt=""
+                    />
+                  </div>
+                </li>
+
+                <li class="litag">
+                  <div class="container d-grid">
+                    <a href="/online-sifaris/form/6"
+                      >विपन्न विद्यार्थी छात्रबृत्ति
+                    </a>
+                    <img
+                      th:src="@{/assets/images/icons/sch3.png}"
+                      class="img-fluid listicon"
+                      alt=""
+                    />
+                  </div>
+                </li>
+
+                <li class="litag">
+                  <div class="container d-grid">
+                    <a href="/online-sifaris/form/7">अपाङ्ग सिफारिस</a>
+                    <img
+                      th:src="@{/assets/images/icons/hadicapped.png}"
+                      class="img-fluid listicon"
+                      alt=""
+                    />
+                  </div>
+                </li>
+
+                <li class="litag">
+                  <div class="container d-grid">
+                    <a href="/online-sifaris/form/8">अस्थाई बसोबास सिफारिस</a>
+                    <img
+                      th:src="@{/assets/images/icons/migration.png}"
+                      class="img-fluid listicon"
+                      alt=""
+                    />
+                  </div>
+                </li>
+
+                <li class="litag">
+                  <div class="container d-grid">
+                    <a href="/online-sifaris/form/9">स्थायी बसोबास सिफारिस</a>
+                    <img
+                      th:src="@{/assets/images/icons/migration.png}"
+                      class="img-fluid listicon"
+                      alt=""
+                    />
+                  </div>
+                </li>
+
+                <li class="litag">
+                  <div class="container d-grid">
+                    <a href="/online-sifaris/form/10"
+                      >नागरिकता र प्रतिलिपि सिफारिस</a
+                    >
+                    <img
+                      th:src="@{/assets/images/icons/idcard.png}"
+                      class="img-fluid listicon"
+                      alt=""
+                    />
+                  </div>
+                </li>
+
+                <li class="litag">
+                  <div class="container d-grid">
+                    <a href="/online-sifaris/form/11">घर कायम सिफारिस</a>
+                    <img
+                      th:src="@{/assets/images/icons/home2.png}"
+                      class="img-fluid listicon"
+                      alt=""
+                    />
+                  </div>
+                </li>
+
+                <li class="litag">
+                  <div class="container d-grid">
+                    <a href="/online-sifaris/form/12">घर बाटो प्रमाणित</a>
+                    <img
+                      th:src="@{/assets/images/icons/way.png}"
+                      class="img-fluid listicon"
+                      alt=""
+                    />
+                  </div>
+                </li>
+
+                <li class="litag">
+                  <div class="container d-grid">
+                    <a href="/online-sifaris/form/13"
+                      >आर्थिक अवस्था कमजोर वा विपन्नता प्रमाणित</a
+                    >
+                    <img
+                      th:src="@{/assets/images/icons/poor.png}"
+                      class="img-fluid listicon"
+                      alt=""
+                    />
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12" id="pjax-container">
+            <div class="row pt-2 pb-2">
+              <div class="col-sm-9">
+                <h4 class="page-title">सिफारिस दखील गर्नुस</h4>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="/online-sifaris/online-form">Home </a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    <span>विद्युत जडान सिफारिस</span>
+                  </li>
+                  <li></li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-body">
+                <input
+                  type="hidden"
+                  name="_token"
+                  value="8c82ziy1cyPf0NeyqhEeRv0dAIMt2CyuvpgsRMOu"
+                />
+                <input type="hidden" name="_method" value="post" />
+
+                <div class="tab-content bc-card-tabs" id="bctabs-content">
+                  <div class="row">
+                    <!-- dynamic code begins -->
+
+                    <div
+                      class="col-md-6"
+                      th:each="questionAndOption : ${questionAndOptions}"
+                      th:unless="${questionAndOption.fillableBySystem}"
+                    >
+                      <div
+                        class="col-md-6 form-label"
+                        th:if="${questionAndOption.fieldType == 'TEXT' || questionAndOption.fieldType == 'MULTI_TEXT'}"
+                      >
+                        <label th:for="${questionAndOption.fieldId}">
+                          <h5
+                            th:if="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName} + ' *'"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                          <h5
+                            th:unless="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName}"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          th:id="'answer' + ${questionAndOption.fieldId}"
+                          th:name="'answer' + ${questionAndOption.fieldId}"
+                        />
+                      </div>
+
+                      <div
+                        class="form-label col-md-6"
+                        th:if="${questionAndOption.fieldType == 'NUMBER'}"
+                      >
+                        <label th:for="${questionAndOption.fieldId}">
+                          <h5
+                            th:if="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName} + ' *'"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                          <h5
+                            th:unless="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName}"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                        </label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          th:id="'answer' + ${questionAndOption.fieldId}"
+                          th:name="'answer' + ${questionAndOption.fieldId}"
+                        />
+                      </div>
+                      <div
+                        class="form-label col-md-6"
+                        th:if="${questionAndOption.fieldType == 'EMAIL'}"
+                      >
+                        <label th:for="${questionAndOption.fieldId}">
+                          <h5
+                            th:if="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName} + ' *'"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                          <h5
+                            th:unless="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName}"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                        </label>
+                        <div class="">
+                          <input
+                            type="email"
+                            class="form-control"
+                            th:id="'answer' + ${questionAndOption.fieldId}"
+                            onBlur="checkStatus(this.id, this.type)"
+                            onfocus="clearField(this.id, this.type)"
+                            th:name="'answer' + ${questionAndOption.fieldId}"
+                          /><span
+                            class="m-2 d-flex"
+                            th:classappend="${true? 'answer'+questionAndOption.fieldId+'Input':''}"
+                          ></span>
+                        </div>
+                      </div>
+                      <div
+                        class="col-md-6 form-label"
+                        th:if="${questionAndOption.fieldType == 'PROVINCE'}"
+                      >
+                        <label th:for="${questionAndOption.fieldId}">
+                          <h5
+                            th:if="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName} + ' *'"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                          <h5
+                            th:unless="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName}"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                        </label>
+
+                        <select
+                          id="lg-province"
+                          name="lg-province"
+                          class="form-control required"
+                          disabled
+                        >
+                          <option value="">प्रदेश छान्नुहोस्</option>
+                          <option
+                            th:each="province, iteration : ${provinceList}"
+                            th:value="${province.provinceId}"
+                            th:text="${province.provinceNameNep}"
+                            th:selected="${province.provinceId==3}"
+                          ></option>
+                        </select>
+                      </div>
+
+                      <div
+                        class="col-md-6 form-label"
+                        th:if="${questionAndOption.fieldType == 'DISTRICT'}"
+                      >
+                        <label th:for="${questionAndOption.fieldId}">
+                          <h5
+                            th:if="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName} + ' *'"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                          <h5
+                            th:unless="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName}"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                        </label>
+
+                        <select
+                          class="form-control required"
+                          name="lg-district"
+                          id="lg-district"
+                          disabled
+                        >
+                          <option
+                            th:each="Districts, iteration : ${DistrictsList}"
+                            th:if="${Districts.provinceId == 3}"
+                            th:value="${Districts.districtId}"
+                            th:text="${Districts.districtNameNep}"
+                            th:selected="${Districts.districtId == 38}"
+                          ></option>
+                        </select>
+                      </div>
+
+                      <div
+                        class="col-md-6 form-label"
+                        th:if="${questionAndOption.fieldType == 'MUNICIPALITY'}"
+                      >
+                        <label th:for="${questionAndOption.fieldId}">
+                          <h5
+                            th:if="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName} + ' *'"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                          <h5
+                            th:unless="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName}"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                        </label>
+                        <select
+                          id="lg-municipality"
+                          name="lg-municipality"
+                          class="form-control required"
+                          disabled
+                        >
+                          <option
+                            th:each="municipalities, iteration : ${MunicipalitiesList}"
+                            th:if="${municipalities.districtId == 38}"
+                            th:value="${municipalities.municipalityId}"
+                            th:text="${municipalities.municipalityNameNep}"
+                            th:selected="${municipalities.municipalityId == 12}"
+                          ></option>
+                        </select>
+                      </div>
+
+                      <div
+                        class="col-md-6 form-label"
+                        th:if="${questionAndOption.fieldType == 'WARD'}"
+                      >
+                        <label th:for="${questionAndOption.fieldId}">
+                          <h5
+                            th:if="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName} + ' *'"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                          <h5
+                            th:unless="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName}"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                        </label>
+                        <select
+                          id="lg-ward"
+                          name="lg-ward"
+                          class="form-control required"
+                        >
+                          <option
+                            th:each="ward, iteration : ${wardList}"
+                            th:if="${ward.municipalityId == 12}"
+                            th:value="${ward.wardId}"
+                            th:text="${ward.wardDescription}"
+                            th:selected="${ward.wardId == 140}"
+                          ></option>
+                        </select>
+                      </div>
+
+                      <div
+                        class="col-md-6 form-label"
+                        th:if="${questionAndOption.fieldType == 'TOLE'}"
+                      >
+                        <label th:for="${questionAndOption.fieldId}">
+                          <h5
+                            th:if="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName} + ' *'"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                          <h5
+                            th:unless="${questionAndOption.required}"
+                            th:text="${questionAndOption.fieldName}"
+                            th:id="'question' + ${questionAndOption.fieldId}"
+                          ></h5>
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          th:id="'answer' + ${questionAndOption.fieldId}"
+                          th:name="'answer' + ${questionAndOption.fieldId}"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="container">
+                      <div class="row m-3">
+                        <select
+                          class="form-select input-small form-select-md"
+                          name="imageDocument"
+                          id="imageDocument" style="width: 73%;"
+                        >
+                          <option value="none" selected hidden>
+                            <span class="badge badge-light"> कागज पत्र </span>
+                          </option>
+                          <option
+                            th:each="questionAndOption : ${questionAndOptions}"
+                            th:if="${questionAndOption.fieldType} == 'IMAGE'"
+                            th:value="${questionAndOption.fieldId}"
+                            th:text="${questionAndOption.required}?${questionAndOption.fieldName}+' *' :${questionAndOption.fieldName}"
+                          ></option>
+                        </select>
+                        <div
+                          th:each="questionAndOption : ${questionAndOptions}"
+                          th:id="'div'+${questionAndOption.fieldId}"
+                          style="display: none"
+                          class="form-label mt-4 col-md-6"
+                          th:if="${questionAndOption.fieldType} == 'IMAGE'"
+                        >
+                          <label th:for="${questionAndOption.fieldId}"
+                            ><h5
+                              th:if="${questionAndOption.required}"
+                              th:text="${questionAndOption.fieldName} + ' *'"
+                              th:id="'question' + ${questionAndOption.fieldId}"
+                            ></h5>
+                            <h5
+                              th:unless="${questionAndOption.required}"
+                              th:text="${questionAndOption.fieldName}"
+                              th:id="'question' + ${questionAndOption.fieldId}"
+                            ></h5
+                          ></label>
+                          <form
+                            th:id="'form' + ${questionAndOption.fieldId}"
+                            th:name="'form' + ${questionAndOption.fieldId}"
+                            enctype="multipart/form-data"
+                            useToken="true"
+                          >
+                            <input
+                              type="file"
+                              class="form-control m-2"
+                              th:id="'answer' + ${questionAndOption.fieldId}"
+                              th:name="'answer' + ${questionAndOption.fieldId}"
+                              data-event="change"
+                              th:data-target="'photo' + ${questionAndOption.fieldId}"
+                              accept="image/*"
+                            />
+                          </form>
+                          <div class="imagebox">
+                            <img
+                              src=""
+                              th:class="'photo' + ${questionAndOption.fieldId} + ' img-thumbnail'"
+                              class="img-thumbnail photo"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="content-wrapper">
+                <div
+                  class="container-fluid"
+                  style="justify-content: center; padding-left: 100px"
+                >
+                  <div>
+                    <input
+                      style="width: auto"
+                      class="btn btn-primary px-5"
+                      name="category-submit-name"
+                      value="फारम भर्नुहोस्"
+                      id="electricity_submit_button"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="javaScript:void();" class="back-to-top"
+      ><i class="fa fa-angle-double-up"></i>
+    </a>
+    <footer class="ftr">
+      <p>
+        © 2021, Online Sifaris, All Rights Reserved. Website By:
+        <a href="https://www.archiesoft.com.np/" target="_blank">ArchieSoft</a>
+      </p>
+    </footer>
+
+    <div th:replace="~{fragments/scripts :: scripts}"></div>
+
+    <script
+      th:src="@{/assets/plugins/nepali-datepicker/nepaliDatePicker.min.js}"
+      src="assets/plugins/nepali-datepicker/jquery.nepaliDatePicker.min.js"
+    ></script>
+    <script
+      th:src="@{/assets/plugins/owlcarousel/owl.carousel.min.js}"
+      src="assets/plugins/owlcarousel/owl.carousel.min.js"
+    ></script>
+    <script
+      th:src="@{/assets/js/moment.min.js}"
+      src="assets/js/moment.min.js"
+    ></script>
+    <script
+      th:src="@{/assets/plugins/aosmaster/aos.js}"
+      src="assets/plugins/aosmaster/aos.js"
+    ></script>
+    <script
+      th:src="@{/assets/jquery.steps/js/jquery.steps.min.js}"
+      src="assets/jquery.steps/js/jquery.steps.min.js"
+      type="text/html"
+    ></script>
+    <script th:src="@{/assets/js/main.js}" src="assets/js/main.js"></script>
+
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+      var questionAndOptions = /*[[${questionAndOptions}]]*/ "";
+      /*]]>*/
+
+      $(function () {
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        $(document).ajaxSend(function (e, xhr, options) {
+          xhr.setRequestHeader(header, token);
+        });
+      });
+
+      $("#lg-province").change(function () {
+        let provinceId = $("#lg-province").val();
+        {
+          $("#lg-district").attr("disabled", false);
+          let contextPath = "http://localhost:8888";
+
+          $.getJSON(
+            contextPath + "/lg/provinces/" + provinceId + "/districts",
+            {},
+            function (data) {
+              var html = '<option value="0">जिल्ला छान्नुहोस्</option>';
+              var len = data.data.length;
+              for (var i = 0; i < len; i++) {
+                html +=
+                  '<option value="' +
+                  data.data[i].districtId +
+                  '">' +
+                  data.data[i].districtName +
+                  "</option>";
+              }
+              html += "</option>";
+              $("#lg-district").html(html);
+            }
+          );
+        }
+      });
+
+      $("#lg-district").change(function () {
+        let districtId = $("#lg-district").val();
+        {
+          $("#lg-municipality").attr("disabled", false);
+          let contextPath = "http://localhost:8888";
+          $.getJSON(
+            contextPath + "/lg/districts/" + districtId + "/municipalities",
+            {},
+            function (data) {
+              var html =
+                '<option value="0">नगरपालिका/गाउँपालिका छान्नुहोस्</option>';
+              var len = data.data.length;
+              for (var i = 0; i < len; i++) {
+                html +=
+                  '<option value="' +
+                  data.data[i].municipalityId +
+                  '">' +
+                  data.data[i].municipalityName +
+                  "</option>";
+              }
+              html += "</option>";
+              $("#lg-municipality").html(html);
+            }
+          );
+        }
+      });
+
+      $("#lg-municipality").change(function () {
+        let municipalityId = $("#lg-municipality").val();
+        {
+          $("#lg-ward").attr("disabled", false);
+          let contextPath = "http://localhost:8888";
+          $.getJSON(
+            contextPath + "/lg/municipalities/" + municipalityId + "/wards",
+            {},
+            function (data) {
+              var html = '<option value="0">वार्ड छान्नुहोस्</option>';
+              var len = data.data.length;
+              for (var i = 0; i < len; i++) {
+                html +=
+                  '<option value="' +
+                  data.data[i].wardId +
+                  '">' +
+                  data.data[i].wardDescription +
+                  "</option>";
+              }
+              html += "</option>";
+              $("#lg-ward").html(html);
+            }
+          );
+        }
+      });
+      //ends
+      //for file upload
+      $(document).ready(() => {
+        $(".inputContainer").hide();
+        $(".inputContainer").find("#updateImage").hide();
+        $(".inputContainer").find("#imageName").hide();
+      });
+
+      $(document).ready(() => {
+        $("#imageDocument").change(() => {
+          let selectData = $("#imageDocument").val();
+          $(`#div${selectData}`).attr("style", "display:true");
+          var d = document.getElementById("imageDocument");
+          d.remove(d.selectedIndex);
+          // var len = questionAndOptions.length;
+          // for ( var i = 0; i < len; i++) {
+          //     if(questionAndOptions[i].fieldType==="IMAGE"){
+          //         let inputValue=questionAndOptions[i].fieldName;
+          //         if(inputValue===selectData){
+          //         $("#"+selectData).show();
+          //          $("#"+selectData).find('#imageFile').change((event)=>{
+          //             var imageURL = URL.createObjectURL(event.target.files[0]);
+          //             console.log(imageURL);
+          //            if($('#imageValue').val !==null){
+          //             $("#"+selectData).find('#imageFile').hide();
+          //             $("#"+selectData).find('#imageDisplay').attr("src",imageURL.toString());
+          //             $("#"+selectData).find('#imageName').show();
+          //             $("#"+selectData).find('#updateImage').show();
+          //             $("#"+selectData).find('#updateImage').click(()=>{
+          //             $("#"+selectData).find('#imageFile').show();
+          //             });
+          //            }
+
+          //          })
+          //         }
+          //     }
+          // }
+        });
+      });
+      //file upload ends
+
+      google.load("elements", "1", {
+        packages: "transliteration",
+      });
+
+      $(function () {
+        var options = {
+          sourceLanguage: "en",
+          destinationLanguage: ["ne"],
+          shortcutKey: "ctrl+g",
+          transliterationEnabled: true,
+        };
+        var control =
+          new google.elements.transliteration.TransliterationControl(options);
+        var uniElement = $(".unicode input[type='text'], #grid_filter input");
+        var myElements = $("input[type='text']");
+        control.makeTransliteratable(myElements);
+        //control.makeTransliteratable(['answer1']);
+      });
+
+      $(function () {
+        var _t, _n, _d, _v;
+        $("input[data-event='change']").on("change", function () {
+          _t = this;
+          _c = $(this).data("target");
+          if (_t.files && _t.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              $("img." + _c)
+                .attr("src", e.target.result)
+                .show();
+              $("img." + _c)
+                .parent()
+                .show();
+            };
+            reader.readAsDataURL(_t.files[0]);
+          }
+        });
+        $("#documents_copy").on("change", function () {
+          _v = $(this).val();
+          $(".documents_hide").hide();
+          $("div." + _v).show();
+        });
+        $("[data-event='toggle']").on("change", function () {
+          _t = $(this);
+          _n = $(this).attr("name");
+          _d = $("[name='" + _n + "']").serializeArray();
+          _c = _t.data("target");
+          if (_d.length > 0 && _t.is(":checked")) {
+            $.each(_d, function (i, fd) {
+              if (fd.value == _t.data("value")) {
+                $("." + _c).show();
+              }
+            });
+          } else {
+            $("." + _c).hide();
+          }
+        });
+      });
+
+      $(function () {
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        $(document).ajaxSend(function (e, xhr, options) {
+          xhr.setRequestHeader(header, token);
+        });
+      });
+
+      google.load("elements", "1", {
+        packages: "transliteration",
+      });
+      function onLoad() {
+        var options = {
+          sourceLanguage: "en",
+          destinationLanguage: ["ne"],
+          shortcutKey: "ctrl+g",
+          transliterationEnabled: true,
+        };
+        var control =
+          new google.elements.transliteration.TransliterationControl(options);
+        var uniElement = $(".unicode input[type='text'], #grid_filter input");
+        control.makeTransliteratable(uniElement);
+        // control.showControl('translControl');
+      }
+
+      $(window).on("load", function (e) {
+        onLoad();
+      });
+
+      $(document).on("pjax:complete", function () {
+        onLoad();
+      });
+
+      $(function () {
+        const genRanHex = (size) =>
+          [...Array(size)]
+            .map(() => Math.floor(Math.random() * 16).toString(16))
+            .join("");
+        let currentDate = new Date();
+        let currentDay = currentDate.getDate();
+        let currentMonth = currentDate.getMonth() + 1;
+        let currentYear = currentDate.getFullYear();
+        let tokenId =
+          "LMC_" +
+          currentYear +
+          currentMonth +
+          currentDay +
+          genRanHex(5).toUpperCase();
+
+        $("#electricity_submit_button").click(function (event) {
+          event.preventDefault();
+          Swal.fire({
+            title: "कृपया पर्खनुहोस ....",
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+          });
+
+          let sifarisInfo = {};
+          sifarisInfo.formId = questionAndOptions[0]["formId"];
+          sifarisInfo.tokenId = tokenId;
+          let proceedSave = [];
+          let answer = [];
+          let myFiles = new Array();
+          var timestamp =
+            new Date().getTime() +
+            Math.floor(Math.random() * (999 - 100 + 1) + 100);
+          // field id is element_id in database
+          questionAndOptions.forEach((questionAndOption) => {
+            let index = questionAndOption.fieldId;
+            var id = "answer" + index;
+            var questId = "#question" + index;
+            var questionId = questionAndOption.fieldId;
+            if (questionAndOption.fillableBySystem === false) {
+              if (
+                questionAndOption.fieldType === "TEXT" ||
+                questionAndOption.fieldType === "NUMBER" ||
+                questionAndOption.fieldType === "EMAIL" ||
+                questionAndOption.fieldType === "TOLE"
+              ) {
+                sifarisInfo[id] = $(`#${id}`).val();
+                answer[index] = $(`#${id}`).val();
+                proceedSave[questionId] = true;
+                $(questId).css("color", "black");
+                if (questionAndOption.required && answer[questionId] === "") {
+                  proceedSave[questionId] = false;
+                  $(questId).css("color", "red");
+                }
+              } else if (questionAndOption.fieldType === "IMAGE") {
+                var randomGeneratedId = Date.now();
+                let f = $(`#${id}`).val();
+                let myFile = {};
+                let file = $(`#${id}`)[0].files[0];
+                if (file !== undefined) {
+                  let fileName = file.name;
+                  myFile.formId = index;
+                  myFile.imgIndex = id;
+                  myFile.fileSize = file.size;
+                  myFile.fileExtension = fileName.split(".").pop();
+                  if (myFile.extension != "") {
+                    myFiles.push(myFile);
+                  }
+
+                  var imageName =
+                    "JPEG_" +
+                    tokenId +
+                    "_" +
+                    questionAndOption.formId +
+                    "_" +
+                    questionAndOption.fieldName +
+                    "." +
+                    fileName.split(".").pop();
+                  sifarisInfo[id] = imageName;
+                  myFile.fileName = imageName;
+                  answer[index] = $(`#${id}`).val();
+                }
+                proceedSave[questionId] = true;
+                $(questId).css("color", "black");
+                if (questionAndOption.required && $(`#${id}`).val() === "") {
+                  proceedSave[questionId] = false;
+                  $(questId).css("color", "red");
+                }
+              } else if (questionAndOption.fieldType === "PROVINCE") {
+                sifarisInfo[id] = $("#lg-province").val();
+                answer[index] = $("#lg-province").val();
+              } else if (questionAndOption.fieldType === "DISTRICT") {
+                sifarisInfo[id] = $("#lg-district").val();
+                answer[index] = $("#lg-district").val();
+              } else if (questionAndOption.fieldType === "MUNICIPALITY") {
+                sifarisInfo[id] = $("#lg-municipality").val();
+                answer[index] = $("#lg-municipality").val();
+              } else if (questionAndOption.fieldType === "WARD") {
+                sifarisInfo[id] = $("#lg-ward").val();
+                answer[index] = $("#lg-ward").val();
+              }
+            }
+          });
+
+          let confirmProceed = true;
+
+          for (let proceed of proceedSave) {
+            if (proceed == false) {
+              confirmProceed = false;
+              break;
+            }
+          }
+
+          let fileLocation = 0;
+
+          if (confirmProceed === true) {
+            while (fileLocation < myFiles.length) {
+              var imgIndex = myFiles[fileLocation].imgIndex;
+              var formId = "form" + myFiles[fileLocation].formId;
+              var form = document.getElementById(formId);
+              var formData = new FormData(form);
+
+              formData.append("imgIndex", imgIndex);
+              formData.append("fileName", myFiles[fileLocation].fileName);
+
+              $.ajax({
+                method: "POST",
+                url: contextPath + "/online-sifaris/form/image",
+                data: formData,
+                async: false,
+                contentType: false,
+                processData: false,
+
+                success: function (result) {
+                  // swal.fire({
+                  //     text: " Image added successfully!",
+                  //     icon: "success",
+                  //     closeOnClickOutside: true,
+                  //     closeOnEsc: true
+                  // })
+                  // .then(function() {
+                  //     window.location.href = contextPath + '/resident';
+                  // });
+                },
+
+                error: function (error) {
+                  // $(".loader-holder").hide();
+                  // swal.fire({
+                  //     text: error.responseJSON.message,
+                  //     icon: "error",
+                  //     closeOnClickOutside: false,
+                  //     closeOnEsc: false
+                  // })
+                  // .then(function() {
+                  //     window.location.href = contextPath;
+                  // });
+                },
+              });
+
+              fileLocation++;
+            }
+          }
+
+          if (confirmProceed === true) {
+            $.ajax({
+              method: "POST",
+              url: contextPath + "/online-sifaris/form/add",
+              data: JSON.stringify(sifarisInfo),
+              contentType: "application/json",
+              success: function (result) {
+                console.log("result ------------- ");
+                console.log(result);
+                swal
+                  .fire({
+                    title: " हजुरको सिफारिस सफलतापूर्वक दर्ता भएको छl!",
+                    text:
+                      "तलको टोकन .न . याद गर्नुहोस |: " +
+                      sifarisInfo.tokenId,
+                    icon: "success",
+                    closeOnClickOutside: true,
+                    closeOnEsc: true,
+                  })
+                  .then(function () {
+                    window.location.href =
+                      contextPath + "/online-sifaris/form/21";
+                  });
+              },
+              error: function (error) {
+                $(".loader-holder").hide();
+                swal
+                  .fire({
+                    text: error.responseJSON.message,
+                    icon: "error",
+                    closeOnClickOutside: false,
+                    closeOnEsc: false,
+                  })
+                  .then(function () {
+                    window.location.href = contextPath;
+                  });
+              },
+            });
+          } else {
+              swal.fire({
+                icon: "info",
+                text: "कृपया महत्योपूर्ण जानकारीहरु भर्नुहोस् | छुटेका जानकारीहरु रातो अक्षरमा देखाइएको छ | ",
+              });
+          }
+        });
+        //ends
+      });
+    </script>
+  </body>
+</html>

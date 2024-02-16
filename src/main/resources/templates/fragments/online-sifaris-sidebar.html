@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	<!-- Start wrapper-->
+		<!-- Start side bar-wrapper -->
+		<div th:fragment="sifaris-sidebar" id="sidebar-wrapper" class="bg-theme bg-theme2" data-simplebar=""
+			data-simplebar-auto-hide="true">
+			<div class="brand-logo">
+<!-- 				<a th:href="@{/super-admin}">  -->
+				<img
+					th:src="@{/assets/images/logo.png}" class="logo-icon"
+					alt="logo icon">
+<!-- 				</a> -->
+			</div>
+			<div class="user-details">
+				<div class="media align-items-center user-pointer collapsed"
+					data-toggle="collapse" data-target="#user-dropdown">
+					<div class="media-body">
+						<h6 class="side-user-name" th:text="${#authentication.principal.fullName}"></h6>
+					</div>
+				</div>
+				<div id="user-dropdown" class="collapse">
+					<ul class="user-setting-menu">
+						<li><a th:href="@{/user/profile}"><i
+								class="icon-user"></i> My Profile</a></li>
+						<li><a th:href="@{/user/setting}"><i
+								class="icon-settings"></i> Setting</a></li>
+						<li><a th:href="@{/logout}"><i class="icon-power"></i>
+								Logout</a></li>
+					</ul>
+				</div>
+			</div>
+			<ul class="sidebar-menu do-nicescrol">
+				<li class="sidebar-header">MAIN NAVIGATION</li>
+				<li>
+					<a th:href="@{/e-governance-dashboard}" class="waves-effect"> <i
+							class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
+					</a>
+				</li>
+				<li>
+					<a th:href="@{/e-governance-dashboard/21/list}"
+						class="waves-effect"><i class="zmdi zmdi-laptop-mac"></i> <span>विद्युत जडान सिफारिस</span>
+					</a>
+				</li>
+				<li sec:authorize="hasAnyRole('CENTRAL_ADMIN' ,'WARD_ADMIN', 'WARD_SECRETARY', 'REGISTRAR', 'PRINTER')">
+					<a th:href="@{/report}"
+						class="waves-effect"><i class="zmdi zmdi-map"></i> <span>Godabari Admin Panel</span>
+					</a>
+				</li>
+				<!-- <li>
+					<a th:href="@{/e-governance/1/list}"
+						class="waves-effect"><i class="zmdi zmdi-laptop-mac"></i> <span>जन्म दर्ता</span>
+					</a>
+				</li>
+
+				<li>
+					<a th:href="@{/e-governance/2/list}"
+						class="waves-effect"><i class="zmdi zmdi-laptop-mac"></i> <span>जिवित सँगको नाता प्रमाणित</span>
+					</a>
+				</li>
+				<li>
+					<a th:href="@{/e-governance/3/list}"
+						class="waves-effect"><i class="zmdi zmdi-laptop-mac"></i> <span>मृतक सँगको नाता प्रमाणित</span>
+					</a>
+				</li>
+				<li>
+					<a th:href="@{/e-governance/4/list}"
+						class="waves-effect"><i class="zmdi zmdi-laptop-mac"></i> <span>विवाह दर्ता</span>
+					</a>
+				</li>
+				<li>
+					<a th:href="@{/e-governance/5/list}"
+						class="waves-effect"><i class="zmdi zmdi-laptop-mac"></i> <span>मृत्यु दर्ता</span>
+					</a>
+				</li>
+				<li>
+					<a th:href="@{/e-governance/6/list}"
+						class="waves-effect"><i class="zmdi zmdi-laptop-mac"></i> <span>सम्बन्ध विच्छेद दर्ता</span>
+					</a>
+				</li>				<li>
+					<a th:href="@{/e-governance/7/list}"
+						class="waves-effect"><i class="zmdi zmdi-laptop-mac"></i> <span>अपाङ्ग सिफारिस</span>
+					</a>
+				</li>
+				<li>
+					<a th:href="@{/e-governance/8/list}"
+						class="waves-effect"><i class="zmdi zmdi-laptop-mac"></i> <span>विवाह प्रमाणित</span>
+					</a>
+				</li>
+				<li>
+					<a th:href="@{/e-governance/9/list}"
+						class="waves-effect"><i class="zmdi zmdi-laptop-mac"></i> <span>जिवित रहेको सिफारिस</span>
+					</a>
+				</li>
+				<li>
+					<a th:href="@{/e-governance/10/list}"
+						class="waves-effect"><i class="zmdi zmdi-laptop-mac"></i> <span>विपन्न विद्यार्थी छात्रबृत्ति सिफारिस</span>
+					</a>
+				</li> -->
+				<li sec:authorize="hasAnyRole('CENTRAL_ADMIN' ,'WARD_ADMIN', 'WARD_SECRETARY', 'REGISTRAR', 'PRINTER')">
+                    <a th:href="@{/online-sifaris/standardlog}"
+                       class="waves-effect"><i class="zmdi zmdi-map"></i> <span>फारम विवरण</span>
+                    </a>
+                </li>
+				
+			</ul>
+		</div>
+		<!-- End side bar-wrapper -->
+</body>
+</html>

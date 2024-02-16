@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import 'var';
+body {
+    font-family: 'Poppins', sans-serif;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0px;
+        padding: 0px;
+    }
+    p {
+        margin: 0px;
+        padding: 0px;
+    }
+    a {
+        text-decoration: none;
+        display: inline-block;
+    }
+    ul {
+        margin: 0px;
+        padding: 0px;
+        li {
+            list-style: none;
+        }
+    }
+    h3 {
+        font-size: 26px;
+    }
+    h2 {
+        font-size: 46px;
+    }
+}
+
+.btn {
+    border: none;
+    border: 0;
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.btn-primary {
+    background-color: $white !important;
+    color: $blue !important;
+    &:focus {
+        box-shadow: none !important;
+    }
+    &:hover {
+        background-color: $white !important;
+        color: $blue !important;
+    }
+}
+
+.btn-secondary {
+    background-color: $red !important;
+    color: $white !important;
+    &:focus {
+        box-shadow: none !important;
+    }
+    &:hover {
+        background-color: $red !important;
+        color: $white !important;
+    }
+}
+
+header {
+    box-shadow: 1px 0px 8px rgba(0, 0, 0, 0.404);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 99;
+    .navbar-brand {
+        color: $red;
+        h4 {
+            display: inline-block;
+        }
+    }
+    .navbar {
+        background-color: $white;
+        padding: 0px;
+        .navbar-nav {
+            .nav-item {
+                margin: 0 20px;
+                .nav-link {
+                    color: $red;
+                    padding: 0;
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+    .nav-right {
+        ul {
+            li {
+                display: inline-block;
+                margin-right: 35px;
+                color: $blue;
+            }
+            #displayDate {
+                color: $blue;
+            }
+        }
+    }
+}
+
+.slider {
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    .slider-wrapper {
+        .slider-inner {
+            img {
+                height: 100vh;
+                object-fit: cover;
+            }
+        }
+    }
+    .slider-detail {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+        // background-color: #ec51462a;
+        background-color: #efffff3b;
+        z-index: 2;
+        .slider-detail-iner {
+            position: absolute;
+            bottom: 120px;
+            left: 80px;
+            width: 100%;
+        }
+        .slider-detail-icon {
+            // width: 150px;
+            // height: 150px;
+            /* From https://css.glass */
+            background: rgb(5, 120, 184);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            // background-color: $blue;
+            display: inline-block;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            height: 100%;
+            // border-radius: 5px;
+            // &:hover {
+            //     background-color: $red;
+            // }
+            // border-radius: 50%;
+            img {
+                width: 80px;
+            }
+            h3 {
+                margin-top: 20px !important;
+                color: $white;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+.ftr {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: $red;
+    z-index: 2;
+    text-align: center;
+    padding: 10px 0;
+    color: $white;
+    a {
+        color: $white;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.mar-t {
+    margin-top: 140px
+}
+
+.online-sifaris {
+    .sifaris-icon {
+        text-align: center;
+        background-color: $blue;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 25px;
+        position: relative;
+        overflow: hidden;
+        &:hover {
+            background-color: #427ebe;
+            .btns {
+                bottom: 0px;
+            }
+        }
+        .btns {
+            position: absolute;
+            bottom: -150px;
+            left: 0;
+            width: 100%;
+            // background-color: $white;
+            display: flex;
+            transition: 0.3s;
+            // background-color: #427ebe;
+            padding: 5px;
+            .btn {
+                margin: 0 5px;
+            }
+        }
+        h6 {
+            color: $white;
+            padding-top: 15px;
+        }
+        .modal {
+            .modal-body {
+                text-align: left;
+                ul {
+                    li {
+                        margin: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.onlisifaris-wrapper {
+    height: 650px;
+    width: 100%;
+    padding: 20px;
+    .row {
+        margin-top: 15px;
+    }
+}
+
+.online-sifarisform-wrapper {
+    margin-top: 150px;
+    .application-type {
+        height: 650px;
+        overflow-y: scroll;
+        box-shadow: 1px 0 8px rgba(0, 0, 0, 0.116);
+        padding: 20px;
+        ul {
+            li {
+                padding: 20px;
+                background-color: $blue;
+                display: inline-block;
+                margin-bottom: 15px;
+                border-radius: 5px;
+                &:hover {
+                    background-color: #2a7cd3;
+                }
+                a {
+                    color: $white;
+                }
+            }
+        }
+    }
+    .card {
+        border: none;
+        box-shadow: 1px 0 8px rgba(0, 0, 0, 0.144);
+        .form-control,
+        .form-select {
+            &:focus {
+                box-shadow: none;
+                border: 1px solid $blue;
+            }
+        }
+        label {
+            .req {
+                color: $red;
+            }
+        }
+        .btn-primary {
+            background-color: $blue !important;
+            color: $white !important;
+        }
+    }
+}
